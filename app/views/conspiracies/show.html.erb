@@ -12,7 +12,4 @@
   </div>
 
 </div>
-<%= button_to "Like", votes_path(conspiracy_id: @conspiracy.id),
-  method: :post,
-  class: "btn btn-primary" %>
-    <%= @conspiracy.votes.count %>likes
+<%= render "vote_btn", conspiracy: @conspiracy %>
