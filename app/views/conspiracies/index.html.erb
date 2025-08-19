@@ -36,7 +36,9 @@
     <% @conspiracies.each do |conspiracy| %>
       <div class="card-product mx-3 my-3 px-3 py-3">
         <div>
-          <h3><%= conspiracy.title %></h3>
+          <h3><%= link_to conspiracy_path(conspiracy) do %>
+            <%= conspiracy.title %></h3>
+            <% end %>
           <p><%= conspiracy.content%> </p>
         </div>
         <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
