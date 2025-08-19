@@ -4,6 +4,7 @@ class Conspiracy < ApplicationRecord
   has_many :votes
   has_many :comments
 
+
   validates :title, presence: true
   validates :content, presence: true
 end
