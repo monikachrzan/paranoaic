@@ -10,4 +10,6 @@
   <div class="conspiracy_author">
     <p>Created by: <%= @conspiracy.user.user_name %></p>
   </div>
+
 </div>
+<%= render "vote_btn", conspiracy: @conspiracy %>
