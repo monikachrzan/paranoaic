@@ -11,23 +11,31 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <li><%= link_to "Sign up", new_user_registration_path, style: "text-decoration: none; color: black" %></li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">My Page</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Menu</a>
-        </li>
-        <li class="nav-item dropdown">
-          <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" data-turbo-method="delete" href="#">Log out</a>
-          </div>
-        </li>
-        <!--li class="nav-item"-->
-        <!--/li-->
+        <% if user_signed_in? %>
+          <!-- Show when logged in -->
+          <li class="nav-item active">
+            <%= link_to "My Page", user_path(current_user), class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path,
+                        data: { turbo_method: :delete },
+                        class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Menu</a>
+          </li>
+          <li class="nav-item dropdown">
+            <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+            </div>
+          </li>
+        <% else %>
+          <!-- Show when logged out -->
+          <li><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+          <li><%= link_to "Log in", new_user_session_path, class: "nav-link" %></li>
+        <% end %>
       </ul>
     </div>
   </div>
