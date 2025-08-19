@@ -1,0 +1,2 @@
+class ConspiraciesController < ApplicationController
+end

@@ -7,3 +7,31 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+
+# Create 5 users
+# Each user has 5 conspiracies
+
+#### USERS
+User.delete_all
+puts "Deleted all"
+puts "Creating..."
+5.times do
+  name = Faker::Name.first_name
+    user = User.create!(
+    user_name: name,
+    email: "#{name}@email.com",
+    password: '123456')
+      5.times do
+        Conspiracy.create!(
+        title: Faker::Lorem.sentence,
+        content: Faker::Lorem.paragraph(sentence_count: 10),
+        user: user,
+        posted_on: Date.today - rand(1..5)
+        )
+      end
+end
+puts "done"
+
+
+#### Conspiracies
