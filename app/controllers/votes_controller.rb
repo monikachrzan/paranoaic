@@ -7,13 +7,17 @@ class VotesController < ApplicationController
 
     if vote
       vote.destroy
-      redirect_to @conspiracy
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("conspiracy-vote-#{@conspiracy.id}", partial: "conspiracies/vote_btn", locals: { conspiracy: @conspiracy }) }
+        format.html { render "conspiracy-vote-#{@conspiracy.id}", status: :unprocessable_entity }
+      end
     else
-      vote = @conspiracy.votes.build(user: @user)
+      vote = Vote.new(user: @user, conspiracy: @conspiracy)
       if vote.save
-        redirect_to @conspiracy
-      else
-        redirect_to @conspiracy, alert: "Could not save your vote."
+        respond_to do |format|
+          format.turbo_stream { render turbo_stream: turbo_stream.replace("conspiracy-vote-#{@conspiracy.id}", partial: "conspiracies/vote_btn", locals: { conspiracy: @conspiracy }) }
+          format.html { render "conspiracy-vote-#{@conspiracy.id}", status: :unprocessable_entity }
+        end
       end
     end
   end

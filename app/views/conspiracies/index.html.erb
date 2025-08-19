@@ -42,12 +42,13 @@
             <% end %>
           <p><%= conspiracy.content%> </p>
         </div>
+        <%= render "conspiracies/vote_btn", conspiracy: conspiracy %>
         <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
       </div>
     <% end %>
   </div>
   <div class="col">
-    <h1 class="btn btn-primary mx-3 my-3">Add a New Conspiracy</h1>
+    <%= link_to "Add a New Conspiracy", new_conspiracy_path, class: "btn btn-primary mx-3 my-3" %>
   </div>
 </div>
 <%# <%= link_to "Create a New Conspiracy", new_conspiracy_path, class: "btn btn-primary mx-3 mt-3" %>
