@@ -5,7 +5,7 @@
 <ul>
   <% @conspiracies.each do |conspiracy| %>
     <li>
-      <%= link_to conspiracies_path(conspiracy) do %>
+      <%= link_to conspiracy_path(conspiracy) do %>
         <%= conspiracy.title %>
       <% end %>
       - <%= conspiracy.content %>
