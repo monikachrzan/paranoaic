@@ -1,0 +1,14 @@
+<h1><%= @user.user_name %></h1>
+
+<h3>List of all my conspiracies</h3>
+
+<ul>
+  <% @conspiracies.each do |conspiracy| %>
+    <li>
+      <%= link_to conspiracy_path(conspiracy) do %>
+        <%= conspiracy.title %>
+      <% end %>
+      - <%= conspiracy.content %>
+    </li>
+  <% end %>
+</ul>
