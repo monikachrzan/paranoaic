@@ -10,8 +10,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <li><%= link_to "Sign up", new_user_registration_path, style: "text-decoration: none; color: black" %></li>
+      <ul class="navbar-nav me-auto navbar-home">
+        <li class="nav-link"><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
         <li class="nav-item active">
           <a class="nav-link" href="#">My Page</a>
         </li>
@@ -38,8 +38,8 @@
       <div class="card-product mx-3 my-3 px-3 py-3">
         <div>
           <h3><%= link_to conspiracy_path(conspiracy) do %>
-            <%= conspiracy.title %></h3>
-            <% end %>
+              <%= conspiracy.title %></h3>
+          <% end %>
           <p><%= conspiracy.content%> </p>
         </div>
         <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>

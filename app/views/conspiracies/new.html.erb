@@ -1,6 +1,10 @@
-<h2>New Create page</h2>
-<%= simple_form_for  @conspiracy do |f| %>
-  <%= f.input :title, label: "First conspiracy idea", placeholder: "Flat Earth" , class: "form-label"%>
-  <%= f.input :content, label: "Second conspiracy idea", placeholder: "Kyrie Irving", class: "form-label"%>
-  <%= f.submit "make your conspiracy", class: "btn btn-primary" %>
-<% end %>
+<div class="container justify-content-center d-flex">
+  <div class="form">
+    <h1 class="text-center">Create Your Conspiracy</h1>
+    <%= simple_form_for  @conspiracy do |f| %>
+      <%= f.input :title, label: "First idea", placeholder: "Flat Earth" , class: "form-control"%>
+      <%= f.input :content, label: "Second idea", placeholder: "Kyrie Irving", class: "form-control"%>
+      <%= f.submit "Make a Conspiracy", class: "btn btn-primary col-12" %>
+    <% end %>
+  </div>
+</div>
