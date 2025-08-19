@@ -3,9 +3,9 @@
 <h3>List of all my conspiracies</h3>
 
 <ul>
-  <% @user.conspiracies.each do |conspiracy| %>
+  <% @conspiracies.each do |conspiracy| %>
     <li>
-      <%= link_to user_conspiracy_path(@user, conspiracy) do %>
+      <%= link_to conspiracies_path(conspiracy) do %>
         <%= conspiracy.title %>
       <% end %>
       - <%= conspiracy.content %>
