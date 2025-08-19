@@ -2,10 +2,12 @@
   Paranoaic
 </div>
 <div class="container">
-  <% @conspiracies.each do |conspiracy| %>
-    <h3 class=""><%= conspiracy.title %></h2>
-    <h4 class=""><%= conspiracy.content%> </h2>
-    <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
+  <div class="card-product">
+    <% @conspiracies.each do |conspiracy| %>
+      <h3 class=""><%= conspiracy.title %></h2>
+      <p class=""><%= conspiracy.content%> </p>
+      <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
+    </div>
   </div>
 <% end %>
 <%# <%= link_to "Create a New Conspiracy", new_conspiracy_path, class: "btn btn-primary mx-3 mt-3" %>
