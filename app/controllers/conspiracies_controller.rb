@@ -13,7 +13,15 @@ class ConspiraciesController < ApplicationController
   end
 
   def create
-    @conspiracy = Conspiracy.new(create_strong_params)
+    # topics = params[:conspiracy][:varone][]
+    # user_input = topics.join(" and ")
+    topic_1 = params[:varone]
+    topic_2 = params[:vartwo]
+    user_input = "#{topic_1} and #{topic_2}"
+    @conspiracy = Conspiracy.new()
+    @message = Message.new(role: "user", content: user_input)
+    @message.conspiracy = @conspiracy
+    @ai_response = AiMessageService.new(@message).call
     @user = current_user
     @conspiracy.user = @user
     if @conspiracy.save
@@ -22,10 +30,13 @@ class ConspiraciesController < ApplicationController
       render "new", status: :unprocessable_entity
     end
   end
+  # def talk_with_ai
+  #   RubyLLM.chat.ask("Generate an unhinged conspiracies with #{conspiracies.title} and #{conspiracies.content}.")
+  # end
 
   private
 
-  def create_strong_params
-    params.require(:conspiracy).permit(:title, :content)
-  end
+  # def conspiracy_params
+  #   params.require(:conspiracy).permit(:title, :content)
+  # end
 end

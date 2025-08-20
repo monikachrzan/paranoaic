@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_08_19_025459) do
+ActiveRecord::Schema[7.1].define(version: 2025_08_20_062012) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chats", force: :cascade do |t|
+    t.bigint "conspiracy_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conspiracy_id"], name: "index_chats_on_conspiracy_id"
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -38,10 +45,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_19_025459) do
   create_table "messages", force: :cascade do |t|
     t.string "role"
     t.text "content"
-    t.bigint "conspiracy_id", null: false
+    t.bigint "chat_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["conspiracy_id"], name: "index_messages_on_conspiracy_id"
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,10 +73,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_08_19_025459) do
     t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
+  add_foreign_key "chats", "conspiracies"
   add_foreign_key "comments", "conspiracies"
   add_foreign_key "comments", "users"
   add_foreign_key "conspiracies", "users"
-  add_foreign_key "messages", "conspiracies"
+  add_foreign_key "messages", "conspiracies", column: "chat_id"
   add_foreign_key "votes", "conspiracies"
   add_foreign_key "votes", "users"
 end
