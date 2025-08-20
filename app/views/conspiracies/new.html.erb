@@ -1,9 +1,14 @@
 <div class="container justify-content-center d-flex">
   <div class="form">
     <h1 class="text-center">Create Your Conspiracy</h1>
-    <%= simple_form_for  @conspiracy do |f| %>
-      <%= f.input :title, label: "First idea", placeholder: "Flat Earth" , class: "form-control"%>
-      <%= f.input :content, label: "Second idea", placeholder: "Kyrie Irving", class: "form-control"%>
+    <%= simple_form_for @chat do |f| %>
+      <%= text_field_tag :varone, "", placeholder: "placeholder one", required: true %>
+      <%= text_field_tag :vartwo, "", placeholder: "placeholder one", required: true %>
+
+      <%# <%= text_field_tag "varone", "value", placeholder: "placeholder one" %>
+      <%# <%= f.input :varone, label: "First idea", placeholder: "Flat Earth" , class: "form-control"%>
+
+      <%# <%= f.input :vartwo, label: "Second idea", placeholder: "Kyrie Irving", class: "form-control"%>
       <%= f.submit "Make a Conspiracy", class: "btn btn-primary col-12" %>
     <% end %>
   </div>

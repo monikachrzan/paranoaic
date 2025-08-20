@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :users
   resources :conspiracies, only: [:index, :new, :create, :show]
   resources :votes, only: [:new, :create, :destroy]
+  resources :chats
 end
