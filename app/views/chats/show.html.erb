@@ -1,0 +1,6 @@
+<h2>Show page for ai</h2>
+
+<% @chat.messages.each do |message| %>
+  <%= message.role %>
+  <%= message.content %>
+<% end %>

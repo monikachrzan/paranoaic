@@ -10,22 +10,17 @@ class ConspiraciesController < ApplicationController
 
   def new
     @conspiracy = Conspiracy.new
+    @chat = Chat.new
   end
 
-  def create
-    @conspiracy = Conspiracy.new(create_strong_params)
-    @user = current_user
-    @conspiracy.user = @user
-    if @conspiracy.save
-      redirect_to conspiracy_path(@conspiracy)
-    else
-      render "new", status: :unprocessable_entity
-    end
-  end
+
+  # def talk_with_ai
+  #   RubyLLM.chat.ask("Generate an unhinged conspiracies with #{conspiracies.title} and #{conspiracies.content}.")
+  # end
 
   private
 
-  def create_strong_params
-    params.require(:conspiracy).permit(:title, :content)
-  end
+  # def conspiracy_params
+  #   params.require(:conspiracy).permit(:title, :content)
+  # end
 end
