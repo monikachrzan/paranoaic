@@ -13,6 +13,7 @@
 # Each user has 5 conspiracies
 
 #### USERS
+Conspiracy.delete_all
 User.delete_all
 puts "Deleted all"
 puts "Creating..."
