@@ -4,8 +4,11 @@ class AiMessageService
   end
 
   def call
-    prompt = @message.build_prompt
-    response = RubyLLM.chat(model: "gemini-1.5-pro-latest").ask(prompt)
-    Message.create(role: "assistant", content: response.content, chat: @message.chat)
+    if @message.chat.conspiracy.content.nil?
+    instructions = @message.build_content
+    else
+    instructions = @message.build_title 
+    end
+    @response = @message.chat.with_instructions(instructions).ask(@message.content)
   end
 end
