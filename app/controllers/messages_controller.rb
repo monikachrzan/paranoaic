@@ -1,5 +1,4 @@
 class MessagesController < ApplicationController
-
   def create
     @conspiracy = Conspiracy.find(params[:conspiracy_id])
     @message = Message.new(message_params)

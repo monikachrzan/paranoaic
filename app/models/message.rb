@@ -1,4 +1,6 @@
 class Message < ApplicationRecord
+  act_as_message
+  
   belongs_to :chat
 
   validates :content, presence: true
