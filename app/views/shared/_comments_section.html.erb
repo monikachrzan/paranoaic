@@ -1,0 +1,5 @@
+<ul>
+<% conspiracy.comments.each do |comment|  %>
+<li><%= comment.user.user_name %> said: <%= comment.content %> on <span class="text-secondary"><%= comment.created_at %></span></li>
+<% end %>
+</ul>
