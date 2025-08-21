@@ -19,7 +19,9 @@ class MessagesController < ApplicationController
     @message.role = 'user'
     @message.chat = @chat
     if @message.valid?
-      AiMessageService.new(@message).call
+      # AiMessageService.new(@message).call
+      # build_conversation_history
+    @chat.with_instructions(instructions).ask(@message.content)
     else
       render 'chats/show', status: :unprocessable_entity
     end
@@ -30,4 +32,11 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
+
+  # def build_conversation_history
+  #   @ruby_llm_chat = RubyLLM.chat(model: "gemini-1.5-pro-latest")
+  #   @chat.messages.each do |message|
+  #     @ruby_llm_chat.add_message(message)
+  #   end
+  # end
 end
