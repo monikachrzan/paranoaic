@@ -1,18 +1,4 @@
 class MessagesController < ApplicationController
-
-  # def create
-  #   @conspiracy = Conspiracy.find(params[:conspiracy_id])
-  #   @message = Message.new(message_params)
-  #   @message.role = "user"
-  #   @message.conspiracy = @conspiracy
-  #   if @message.save
-  #     AiMessageService.new(@message).call
-  #     redirect_to conspiracy_path(@conspiracy)
-  #   else
-  #     render "conspiracies/show", status: :unprocessable_entity
-  #   end
-  # end
-
   def create
     @chat = Chat.find(params[:chat_id])
     @message = Message.new(message_params)
@@ -20,10 +6,15 @@ class MessagesController < ApplicationController
     @message.chat = @chat
     if @message.valid?
       AiMessageService.new(@message).call
-      # build_conversation_history
-    # @chat.with_instructions(instructions).ask(@message.content)
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to chat_path(@chat) }
+      end
     else
-      render 'chats/show', status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("new_message", partial: "messages/form", locals: { chat: @chat, message: @message }) }
+        format.html { render "chats/show", status: :unprocessable_entity }
+      end
     end
   end
 
@@ -32,5 +23,4 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content)
   end
-
 end
