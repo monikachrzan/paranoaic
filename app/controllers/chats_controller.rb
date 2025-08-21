@@ -8,7 +8,7 @@ class ChatsController < ApplicationController
     # topics = params[:conspiracy][:varone][]
     # user_input = topics.join(" and ")
     @conspiracy = Conspiracy.create(user: current_user)
-    @chat = Chat.create(conspiracy: @conspiracy)
+    @chat = Chat.create(conspiracy: @conspiracy, model_id: "gemini-1.5-pro-latest")
 
     topic_1 = params[:varone]
     topic_2 = params[:vartwo]
@@ -17,6 +17,7 @@ class ChatsController < ApplicationController
     @message = Message.new(role: "user", content: user_input)
     @message.chat = @chat
     @ai_response = AiMessageService.new(@message).call
+
 
     redirect_to chat_path(@chat)
   end
