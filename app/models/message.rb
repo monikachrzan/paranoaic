@@ -3,7 +3,7 @@ class Message < ApplicationRecord
 
   belongs_to :chat
 
-  validates :content, presence: true
+  # validates :content, presence: true
 
   def build_prompt
   prompt = <<-PROMPT
