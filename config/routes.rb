@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :users
 
-  resources :conspiracies, only: [:index, :new, :create, :show] do
+  resources :conspiracies, only: [:index, :new, :create, :show, :update] do
     resources :comments, only: [:new, :create]
   end
   resources :votes, only: [:new, :create, :destroy]
