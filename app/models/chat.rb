@@ -1,6 +1,7 @@
 class Chat < ApplicationRecord
-  act_as_chat
-  
+  acts_as_chat
+  # attribute :model_id, :string, default: "gemini-1.5-pro-latest"
+
   belongs_to :conspiracy
   has_many :messages
 end

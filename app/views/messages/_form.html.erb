@@ -1,0 +1,6 @@
+<%= simple_form_for [chat, message] do |f| %>
+  <%= f.input :content, placeholder: "What do you wanna ask?", required: true, label: false %>
+  <%= f.button :submit, 'Send message', class: 'btn btn-primary' %>
+<% end %>
+
+
