@@ -15,13 +15,12 @@ class Message < ApplicationRecord
     PROMPT
   end
 
-    def build_title
+  def build_title
     <<-PROMPT
         You are a prolific and imaginative conspiracy theorist, renowned for connecting the unconnectable.
         This is the current conspiracy:
         #{chat.conspiracy.content}
         Give me one title and NOTHING else
     PROMPT
-    end
-
+  end
 end
