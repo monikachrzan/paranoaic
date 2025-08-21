@@ -32,29 +32,47 @@ class ConspiraciesController < ApplicationController
     end
   end
 
+  def update
+    @conspiracy = Conspiracy.find(params[:id])
+    chat_id = params[:chat_id] || params.dig(:conspiracy, :chat_id)
+    chat = Chat.find(chat_id)
+    ai_message = chat.messages.where(role: "assistant").order(created_at: :desc).first
+
+    if @conspiracy.content.nil?
+      @conspiracy.content = ai_message.content
+      @conspiracy.save
+      @message = Message.new(content: "Can you generate a title?", role: "user", chat: chat)
+      AiMessageService.new(@message).call
+      redirect_to chat_path(chat) # turbo
+    else
+      @conspiracy.title = ai_message.content
+      @conspiracy.save
+      redirect_to conspiracy_path(@conspiracy)
+    end
+  end
   private
 
-  def extract_title_and_content(text)
-    body = text.to_s.strip
+  # def extract_title_and_content(text)
+  #   body = text.to_s.strip
 
-    lines = body.lines
-    first = lines.first.to_s.strip
+  #   lines = body.lines
+  #   first = lines.first.to_s.strip
 
-    if first.start_with?("#")
-      title = first.sub(/\A#+\s*/, "").strip
-      rest = lines[1..]&.join.to_s.strip
-      return [title.presence || "Untitled Conspiracy", rest.presence || body]
-    end
+  #   if first.start_with?("#")
+  #     title = first.sub(/\A#+\s*/, "").strip
+  #     rest = lines[1..]&.join.to_s.strip
+  #     return [title.presence || "Untitled Conspiracy", rest.presence || body]
+  #   end
 
-    parts = body.split(/\n{2,}/)
-    if parts.length >= 2
-      title = first [0, 120]
-      content = parts[1..].join("\n\n").strip
-      return [title.presence || "Untitled Conspiracy", content.presence || body]
-    end
+  #   parts = body.split(/\n{2,}/)
+  #   if parts.length >= 2
+  #     title = first [0, 120]
+  #     content = parts[1..].join("\n\n").strip
+  #     return [title.presence || "Untitled Conspiracy", content.presence || body]
+  #   end
 
-    title = first[0, 120]
-    content = body.sub(first, "").strip
-    [title.presence || "Untitled Conspiracy", content.presence || body]
-  end
+  #   title = first[0, 120]
+  #   content = body.sub(first, "").strip
+  #   [title.presence || "Untitled Conspiracy", content.presence || body]
+  # end
 end

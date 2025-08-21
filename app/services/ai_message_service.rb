@@ -4,7 +4,11 @@ class AiMessageService
   end
 
   def call
-    instructions = @message.build_prompt
+    if @message.chat.conspiracy.content.nil?
+    instructions = @message.build_content
+    else
+    instructions = @message.build_title 
+    end
     @response = @message.chat.with_instructions(instructions).ask(@message.content)
   end
 end

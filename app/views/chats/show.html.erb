@@ -1,12 +1,9 @@
 <div id="messages">
   <%= render 'messages/messages', messages: @chat.messages.order(:created_at) %>
 </div>
-
 <div id="new_message">
   <%= render "messages/form", chat: @chat, message: @message %>
 </div>
-
 <div id="save_conspiracy">
   <%= render "conspiracies/save_form", chat: @chat %>
 </div>
-

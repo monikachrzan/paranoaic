@@ -1,4 +1,8 @@
-<%= simple_form_for Conspiracy.new, url: conspiracies_path do |f| %>
+<%= simple_form_for chat.conspiracy do |f| %>
   <%= hidden_field_tag :chat_id, chat.id %>
-  <%= f.button :submit, 'Create the conspiracy', class: 'btn btn-primary', id: 'save' %>
+  <% if chat.conspiracy.content.nil? %>
+    <%= f.button :submit, 'Confirm content', class: 'btn btn-primary', id: 'save' %>
+  <% else %>
+    <%= f.button :submit, 'Confirm title', class: 'btn btn-primary', id: 'save' %>
+  <% end %>
 <% end %>
