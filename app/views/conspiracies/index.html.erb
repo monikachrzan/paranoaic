@@ -36,21 +36,25 @@
   </div>
 </div>
 </div>
-<div class="row">
+
+<div class="row d-flex flex-row">
   <div class="col-10 background-color-index">
     <% @conspiracies.each do |conspiracy| %>
-      <div class="card-product mx-3 my-3 px-3 py-3">
+      <div class="card-product mx-3 my-3 px-3 py-3 d-flex justify-content-between">
         <div>
           <h3><%= link_to conspiracy_path(conspiracy) do %>
               <%= conspiracy.title %></h3>
           <% end %>
           <p><%= conspiracy.content%> </p>
         </div>
-        <%= render "conspiracies/vote_btn", conspiracy: conspiracy %>
-        <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
+      <div class="d-flex flex-column">
+        <%= render "shared/vote_btn", conspiracy: conspiracy %>
+      </div>
       </div>
     <% end %>
   </div>
+</div>
+
   <div class="col">
     <%= link_to "Add a New Conspiracy", new_conspiracy_path, class: "btn btn-secondary mx-3 my-3 new-conspiracy-btn" %>
   </div>
