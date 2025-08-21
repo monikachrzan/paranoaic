@@ -1,11 +1,9 @@
-<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://www.thetimes.com/imageserver/image/%2Fmethode%2Ftimes%2Fprod%2Fweb%2Fbin%2F99fb9468-4b44-406d-a4c2-5646791b6367.jpg?crop=1600%2C900%2C0%2C0&format=webp&resize=1500)">
-  Parano-AI-c
-</div>
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
       <img src="conspir-ai-cy.png" />
     </a>
+    <h3>Parano-AI-c</h3>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -37,22 +35,27 @@
 </div>
 </div>
 <div class="row">
-  <div class="col-10 background-color-index">
+  <div class="col-10 row background-color-index justify-content-center g-0 ps-2">
     <% @conspiracies.each do |conspiracy| %>
-      <div class="card-product mx-3 my-3 px-3 py-3">
-        <div>
-          <h3><%= link_to conspiracy_path(conspiracy) do %>
-              <%= conspiracy.title %></h3>
-          <% end %>
-          <p><%= conspiracy.content%> </p>
+      <div class="card-product col-11 row rounded mx-3 my-3 px-3 py-3">
+        <h3 class="col-12 title-index">
+          <%= link_to conspiracy_path(conspiracy) do %>
+            <%= conspiracy.title %>
+          <%end%>
+        </h3>
+        <div class="col-12 justify-content-between row">
+          <p class="col-10"><%= conspiracy.content%> </p>
+          <div class="col-2 votes">
+            <%= render "conspiracies/vote_btn", conspiracy: conspiracy %>
+            <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
+          </div>
         </div>
-        <%= render "conspiracies/vote_btn", conspiracy: conspiracy %>
-        <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
       </div>
     <% end %>
   </div>
-  <div class="col">
-    <%= link_to "Add a New Conspiracy", new_conspiracy_path, class: "btn btn-secondary mx-3 my-3 new-conspiracy-btn" %>
+  <div class="col-2">
+    <%= link_to "Add a New Conspiracy", new_conspiracy_path, class: "btn btn-secondary mx-3 my-3 new-conspiracy-btn add-button" %>
   </div>
 </div>
+<%# <%= link_to "Create a New Conspiracy", new_conspiracy_path, class: "btn btn-primary mx-3 mt-3" %>
 <%# <%= link_to "Create a New Conspiracy", new_conspiracy_path, class: "btn btn-primary mx-3 mt-3" %>

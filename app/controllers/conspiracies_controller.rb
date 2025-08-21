@@ -1,5 +1,4 @@
 class ConspiraciesController < ApplicationController
-
   def index
     @conspiracies = Conspiracy.all
   end
@@ -13,12 +12,11 @@ class ConspiraciesController < ApplicationController
     @chat = Chat.new
   end
 
-
   # def talk_with_ai
   #   RubyLLM.chat.ask("Generate an unhinged conspiracies with #{conspiracies.title} and #{conspiracies.content}.")
   # end
 
-  private
+  # private
 
   # def conspiracy_params
   #   params.require(:conspiracy).permit(:title, :content)
