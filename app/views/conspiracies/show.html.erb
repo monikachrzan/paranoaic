@@ -4,14 +4,21 @@
     <div class="conspiracy_title">
       <%= @conspiracy.title %>
     </div>
+      <div class="conspiracy_author">
+        <p>Created by: <%= @conspiracy.user.user_name %></p>
+      </div>
     <div class="conspiracy content">
       <%= @conspiracy.content %>
+      <div class= "vote d-flex">
+        <%= render "shared/vote_btn", conspiracy: @conspiracy %>
+      </div>
+        <%# render comment form here %>
+      <div class= "comment d-flex">
+        <%= render "shared/comment_form", conspiracy: @conspiracy, comment:Comment.new %>
+      </div>
+      <div id="comments">
+        <%= render "shared/comments_section", conspiracy: @conspiracy %>
+      </div>
     </div>
-    <div class="conspiracy_author">
-      <p>Created by: <%= @conspiracy.user.user_name %></p>
-    </div>
-  </div>
-  <div class= "vote d-flex">
-    <%= render "vote_btn", conspiracy: @conspiracy %>
   </div>
 </div>

@@ -6,6 +6,7 @@ class ConspiraciesController < ApplicationController
 
   def show
     @conspiracy = Conspiracy.find(params[:id])
+    @comment = Comment.create(conspiracy: @conspiracy)
   end
 
   def new
