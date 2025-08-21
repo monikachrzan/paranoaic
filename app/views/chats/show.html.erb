@@ -1,6 +1,14 @@
 <h2>Show page for ai</h2>
 
-<% @chat.messages.each do |message| %>
-  <%= message.role %>
-  <%= message.content %>
-<% end %>
+
+<%# @chat.messages.each do |message| %>
+  <%#= message.role %>
+  <%#= message.content %>
+<%# end %>
+<div id="messages">
+  <%= render 'messages/messages', messages: @chat.messages.order(:created_at) %>
+</div>
+
+<div id="new_message">
+  <%= render "messages/form", chat: @chat, message: @message %>
+</div>
