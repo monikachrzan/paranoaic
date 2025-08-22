@@ -1,15 +1,32 @@
-<div class="container d-flex">
-  <div class="card-product mx-3 my-3 px-3 py-3 h-100 w-100 flex-column">
-    <h1><%= @user.user_name %></h1>
-    <h3>List of all my conspiracies</h3>
-    <ul>
-      <% @conspiracies.each do |conspiracy| %>
-        <li>
-          <%= link_to conspiracy_path(conspiracy) do %>
-            <%= conspiracy.title %>
+<div class="row">
+  <div class="col-10 row background-color-index justify-content-center g-0 ps-2">
+    <% @conspiracies.each do |conspiracy| %>
+      <div class="card-product col-11 row mx-3 my-3 px-3 py-3">
+        <div class="col-10 justify-content-between d-flex flex-column">
+          <h3>
+            <%= link_to conspiracy_path(conspiracy) do %>
+              <%= conspiracy.title %>
+            <%end%>
+          </h3>
+          <p><%= conspiracy.content%> </p>
+        </div>
+
+        <div class="col-2 votes mb-3 d-flex flex-column align-items-center">
+          <%= link_to conspiracies_path, class: "btn w-100" do %>
+            <%= conspiracy.comments.count %> <i class="fa-solid fa-comments fa-rotate-by fa-lg" style="color: #ff5c42; --fa-rotate-angle: 2259266deg;"></i>
           <% end %>
-          - <%= conspiracy.content %>
-        </li>
-      <% end %>
-    </ul>
+          <%= render "shared/vote_btn", conspiracy: conspiracy %>
+          <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
+        </div>
+
+      </div>
+    <% end %>
+
   </div>
+
+  <div class="col-2 side-bar">
+    <%= link_to "Add a New Conspiracy", new_conspiracy_path, class: "btn btn-secondary mx-3 my-3 new-conspiracy-btn add-button" %>
+  </div>
+
+</div>
+</div>

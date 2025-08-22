@@ -1,5 +1,5 @@
-<ul>
 <% conspiracy.comments.each do |comment|  %>
-<li><%= comment.user.user_name %> said: <%= comment.content %> on <span class="text-secondary"><%= comment.created_at %></span></li>
+  <h5 class="mt-4">  <%= comment.content %></h5>
+  <h6><%= comment.user.user_name %></h6>
+  - <%= comment.created_at %>
 <% end %>
-</ul>
