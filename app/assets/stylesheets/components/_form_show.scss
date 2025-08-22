@@ -1,6 +1,6 @@
 .form {
   width: 500px;
-  border: 15px solid rgb(126, 3, 15);
+  border: 3px solid rgb(225, 92, 66 );
   padding: 50px;
   background: white;
   margin-top: 30px;
@@ -9,4 +9,14 @@
     .my-btn{
       background-color: $red-button;
     }
+  }
+
+* {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 420;
+  font-style: normal;
+}
+  .bordersm {
+  border: 0.3px solid rgb(229, 213, 208);
   }
