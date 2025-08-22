@@ -1,5 +1,5 @@
 <div id="conspiracy-vote-<%= conspiracy.id %>" style="width: 4rem;" class="mb-3">
-<%= button_to votes_path(conspiracy_id: conspiracy.id), method: :post, class: "btn btn-secondary w-100" do%>
-  <i class="fa-solid fa-eye"></i> <%= conspiracy.votes.count %> votes
+  <%= button_to votes_path(conspiracy_id: conspiracy.id), method: :post, class: "btn btn-secondary w-100 vote-btn " do%>
+    <%= conspiracy.votes.count %> <i class="fa-solid fa-eye"></i>
   <% end %>
 </div>
