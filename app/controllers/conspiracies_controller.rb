@@ -1,7 +1,11 @@
 class ConspiraciesController < ApplicationController
-  def index
-    @conspiracies = Conspiracy.all
-  end
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
+
+def index
+  @conspiracies = Conspiracy.where.not(content: [nil, ""])
+  @conspiracies = @conspiracies.where.not(title: [nil, ""])
+end
 
   def show
     @conspiracy = Conspiracy.find(params[:id])
