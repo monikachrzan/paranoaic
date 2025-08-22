@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <!-- Show when logged in -->
+            <!-- Show when logged in -->
           <li class="nav-item active">
             <%= link_to "My Page", user_path(current_user), class: "nav-link" %>
           </li>
@@ -28,38 +28,40 @@
           <li class="nav-item dropdown">
             <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
           </div>
-        </li>
-      <% else %>
-        <!-- Show when logged out -->
-        <li><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
-        <li><%= link_to "Log in", new_user_session_path, class: "nav-link" %></li>
-      <% end %>
-    </ul>
+          </li>
+        <% else %>
+          <!-- Show when logged out -->
+          <li><%= link_to "Sign up", new_user_registration_path, class: "nav-link" %></li>
+          <li><%= link_to "Log in", new_user_session_path, class: "nav-link" %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>
-</div>
+
+<!-- Conspiracies cards -->
 <div class="row">
   <div class="col-10 row background-color-index justify-content-center g-0 ps-2">
     <% @conspiracies.each do |conspiracy| %>
-      <div class="card-product col-11 row mx-3 my-3 px-3 py-3">
-        <div class="col-10 justify-content-between d-flex flex-column">
-          <h3>
-            <%= link_to conspiracy_path(conspiracy) do %>
-              <%= conspiracy.title %>
-            <%end%>
-          </h3>
-          <p><%= conspiracy.content%> </p>
+      <div class="card-product col-11 mx-3 my-3 p-3"> <!-- removed `row` -->
+        <a href="<%= conspiracy_path(conspiracy) %>" class="card-trip-link" aria-label="Open"></a>
+
+        <div class="card-content">
+          <h3><%= link_to conspiracy.title, conspiracy_path(conspiracy) %></h3>
+          <p><%= conspiracy.content %></p>
         </div>
-        <div class="col-2 votes mb-3 d-flex flex-column align-items-center">
-          <%= link_to conspiracies_path, class: "btn w-100" do %>
-            <%= conspiracy.comments.count %> <i class="fa-solid fa-comments fa-rotate-by fa-lg" style="color: #ff5c42; --fa-rotate-angle: 2259266deg;"></i>
+
+        <div class="votes">
+          <%= link_to conspiracies_path, class: "btn btn-secondary vote-btn w-100" do %>
+            <%= conspiracy.comments.count %>
+            <i class="fa-solid fa-comments fa-lg"></i>
           <% end %>
           <%= render "shared/vote_btn", conspiracy: conspiracy %>
-          <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
         </div>
       </div>
     <% end %>
   </div>
+
   <div class="col-2 side-bar">
     <%= link_to "Add a New Conspiracy", new_conspiracy_path, class: "btn btn-secondary mx-3 my-3 new-conspiracy-btn add-button" %>
   </div>
