@@ -1,10 +1,12 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">
-      <img src="conspir-ai-cy.png" />
-    </a>
-    <div class="d-flex justify-content-center">
-      <h3>Parano-AI-c</h3>
+    <div class="d-flex">
+      <a class="navbar-brand" href="#">
+        <img src="conspir-ai-cy.png" />
+      </a>
+      <div class="mt-2 mb-0">
+        <h5>Parano-AI-c</h5>
+      </div>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -39,23 +41,26 @@
 <div class="row">
   <div class="col-10 row background-color-index justify-content-center g-0 ps-2">
     <% @conspiracies.each do |conspiracy| %>
-      <div class="card-product col-11 row rounded mx-3 my-3 px-3 py-3">
-        <h3 class="col-12 title-index">
-          <%= link_to conspiracy_path(conspiracy) do %>
-            <%= conspiracy.title %>
-          <%end%>
-        </h3>
-        <div class="col-12 justify-content-between row">
-          <p class="col-10"><%= conspiracy.content%> </p>
-          <div class="col-2 votes">
-            <%= render "conspiracies/vote_btn", conspiracy: conspiracy %>
-            <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
-          </div>
+      <div class="card-product col-11 row mx-3 my-3 px-3 py-3">
+        <div class="col-10 justify-content-between d-flex flex-column">
+          <h3>
+            <%= link_to conspiracy_path(conspiracy) do %>
+              <%= conspiracy.title %>
+            <%end%>
+          </h3>
+          <p><%= conspiracy.content%> </p>
+        </div>
+        <div class="col-2 votes mb-3 d-flex flex-column align-items-center">
+          <%= link_to conspiracies_path, class: "btn w-100" do %>
+            <%= conspiracy.comments.count %> <i class="fa-solid fa-comments fa-rotate-by fa-lg" style="color: #ff5c42; --fa-rotate-angle: 2259266deg;"></i>
+          <% end %>
+          <%= render "shared/vote_btn", conspiracy: conspiracy %>
+          <%= link_to "", root_path(conspiracy), class: "card-trip-link" %>
         </div>
       </div>
     <% end %>
   </div>
-  <div class="col-2">
+  <div class="col-2 side-bar">
     <%= link_to "Add a New Conspiracy", new_conspiracy_path, class: "btn btn-secondary mx-3 my-3 new-conspiracy-btn add-button" %>
   </div>
 </div>
