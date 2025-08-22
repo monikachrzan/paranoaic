@@ -1,11 +1,13 @@
-import { Controller } from "@hotwired/stimulus";
+import { Controller } from "@hotwired/stimulus"
 import Swal from "sweetalert2";
 
+// Connects to data-controller="alert"
 export default class extends Controller {
+
   static values = {
     icon: String,
-    alertTitle: String,
-    alertHtml: String,
+    title: String,
+    html: String,
     confirmButtonText: String,
     showCancelButton: Boolean,
     cancelButtonText: String,
@@ -16,12 +18,17 @@ export default class extends Controller {
 
     Swal.fire({
       icon: this.iconValue,
-      title: this.alertTitleValue,
-      html: this.alertHtmlValue,
+      title: this.titleValue,
+      html: this.htmlValue,
       confirmButtonText: this.confirmButtonTextValue,
       showCancelButton: this.showCancelButtonValue,
       cancelButtonText: this.cancelButtonTextValue,
       reverseButtons: true,
-    });
+      }).then((action) => {
+      if (action.isConfirmed) {
+        event.target[event.type](); // "submit"
+      }
+    })
+    .catch(event.preventDefault())
   }
-}
+};
