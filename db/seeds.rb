@@ -13,6 +13,10 @@
 # Each user has 5 conspiracies
 
 #### USERS
+Vote.delete_all
+Comment.delete_all
+Message.delete_all
+Chat.delete_all
 Conspiracy.delete_all
 User.delete_all
 puts "Deleted all"
