@@ -1,6 +1,6 @@
 <div id= "Comment_form">
-<%= simple_form_for [conspiracy, comment] do |f| %>
-  <%= f.input :content, label: "Tell us what you know", placeholder: "What's your insight?", required: true %>
-  <%= f.submit 'Share', class: "btn btn-primary col-12" %>
-<% end %>
+  <%= simple_form_for [conspiracy, comment] do |f| %>
+    <%= f.input :content, label: "Tell us what you know", placeholder: "What's your insight?", required: true, class: "bordersm inter"%>
+    <%= f.submit 'Share', class: "btn btn-success col-12" %>
+  <% end %>
 </div>
