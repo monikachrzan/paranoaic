@@ -3,6 +3,7 @@ class Message < ApplicationRecord
 
   belongs_to :chat
 
+
   def build_content
     <<-PROMPT
         You are a prolific and imaginative conspiracy theorist, renowned for connecting the unconnectable.
