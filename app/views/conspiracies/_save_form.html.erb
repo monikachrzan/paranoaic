@@ -1,8 +1,8 @@
 <%= simple_form_for chat.conspiracy do |f| %>
   <%= hidden_field_tag :chat_id, chat.id %>
   <% if chat.conspiracy.content.nil? %>
-    <%= f.button :submit, 'Confirm content', class: 'btn btn-primary', id: 'save' %>
+    <%= f.button :submit, '✅ Confirm content', class: 'btn btn-success w-100', id: 'save' %>
   <% else %>
-    <%= f.button :submit, 'Confirm title', class: 'btn btn-primary', id: 'save' %>
+    <%= f.button :submit, '✅ Confirm title', class: 'btn btn-success w-100', id: 'save' %>
   <% end %>
 <% end %>

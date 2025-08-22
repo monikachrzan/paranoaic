@@ -1,9 +1,18 @@
-<div id="messages">
+<h1 class="text-center p-4 bordersm">🔮 Connect the dots 🔮</h1>
+<div class="container ">
+<h5 class="text-gray-600 my-3 text-center">"Reveal what they don’t want you to know. 🔵💊🔴"</h5>
+
+
+<div id="messages" class="bordersm inter">
   <%= render 'messages/messages', messages: @chat.messages.order(:created_at) %>
 </div>
-<div id="new_message">
+
+<div id="new_message" class="bordersm inter">
   <%= render "messages/form", chat: @chat, message: @message %>
 </div>
-<div id="save_conspiracy">
+
+<div id="save_conspiracy" class="bordersm inter">
   <%= render "conspiracies/save_form", chat: @chat %>
+</div>
+
 </div>
