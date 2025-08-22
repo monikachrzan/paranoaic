@@ -3,9 +3,13 @@
     <a class="navbar-brand" href="#">
       <img src="conspir-ai-cy.png" />
     </a>
+    <<<<<<< HEAD
     <div class="d-flex justify-content-center">
       <h3>Parano-AI-c</h3>
     </div>
+    =======
+    <h3>Parano-AI-c</h3>
+    >>>>>>> master
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,7 +44,7 @@
   <div class="col-10 row background-color-index justify-content-center g-0 ps-2">
     <% @conspiracies.each do |conspiracy| %>
       <div class="card-product col-11 row rounded mx-3 my-3 px-3 py-3">
-        <h3 class="col-12 title-color">
+        <h3 class="col-12 title-index">
           <%= link_to conspiracy_path(conspiracy) do %>
             <%= conspiracy.title %>
           <%end%>
@@ -59,4 +63,5 @@
     <%= link_to "Add a New Conspiracy", new_conspiracy_path, class: "btn btn-secondary mx-3 my-3 new-conspiracy-btn add-button" %>
   </div>
 </div>
+<%# <%= link_to "Create a New Conspiracy", new_conspiracy_path, class: "btn btn-primary mx-3 mt-3" %>
 <%# <%= link_to "Create a New Conspiracy", new_conspiracy_path, class: "btn btn-primary mx-3 mt-3" %>
