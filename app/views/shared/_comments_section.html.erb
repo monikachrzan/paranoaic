@@ -1,5 +1,9 @@
+<div class="container border mt-4">
 <% conspiracy.comments.each do |comment|  %>
-  <h5 class="mt-4">  <%= comment.content %></h5>
-  <h6><%= comment.user.user_name %></h6>
-  - <%= comment.created_at %>
+<div class="border mt-3 w-100 text-center py-3 bg-gradient-to-r from-purple-600 to-blue-500 text-black font-bold rounded-xl shadow-lg hover:scale-105 transform transition">
+  <h5>  <%= comment.content %></h5>
+  <h6>- <%= comment.user.user_name %></h6>
+  <p>- <%= comment.created_at %></p>
+  </div>
 <% end %>
+</div>
