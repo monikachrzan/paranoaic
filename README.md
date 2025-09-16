@@ -75,5 +75,5 @@ Created with paranoia and humor by the **Parano AI C team**.
 ### 👥 Team
 - [Gaëtan Duquesnoy](https://github.com/GaetanDuq)  
 - [Monika Chrzan](https://github.com/Darrrth)  
-- [Mandil Khadka](https://github.com/mandilkhadka)) 
+- [Mandil Khadka](https://github.com/mandilkhadka)
 - [Stefan Muhsin](https://github.com/Stefanmuhsin) 
